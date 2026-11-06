@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>智联云科 · 让数据成为企业的第二增长曲线</title>
+<meta name="description" content="智联云科为企业提供云计算、数据中台与 AI 一体化解决方案，助力企业数字化转型升级。" />
+<style>
+/* ============================================================
+   智联云科 · 企业数字化主题主页
+   设计：浅色科技风 / 电光蓝 + 青绿 / 全站响应式 / 无外部依赖
+   ============================================================ */
+:root{
+  --ink:#0B1220;
+  --ink-2:#46536B;
+  --ink-3:#8492A8;
+  --line:#E6ECF4;
+  --bg:#FFFFFF;
+  --bg-soft:#F5F8FC;
+  --blue:#2B5BFF;
+  --blue-2:#6B87FF;
+  --cyan:#08BFA6;
+  --violet:#7C5CFF;
+  --radius:18px;
+  --radius-s:12px;
+  --shadow-s:0 6px 20px rgba(16,32,64,.06);
+  --shadow-m:0 18px 50px rgba(16,32,64,.10);
+  --shadow-l:0 30px 70px rgba(11,18,32,.18);
+  --wrap:1200px;
+  --font:"Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font-family:inherit}
+svg{display:block}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 28px}
+.icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- 通用 ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--blue);border-radius:2px}
+.section{padding:104px 0}
+.section.soft{background:var(--bg-soft)}
+.sec-head{max-width:680px;margin-bottom:56px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head.center .eyebrow::before{display:none}
+.sec-title{font-size:clamp(28px,3.6vw,42px);line-height:1.25;font-weight:800;letter-spacing:-.02em;margin-top:16px}
+.sec-desc{color:var(--ink-2);font-size:16px;margin-top:16px}
+.grad-text{background:linear-gradient(100deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 26px;border-radius:999px;font-size:15px;font-weight:600;border:1px solid transparent;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease;white-space:nowrap}
+.btn .icon{width:17px;height:17px}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 12px 28px rgba(43,91,255,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(43,91,255,.34);background:#1F4DF0}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.btn-outline-light{border-color:rgba(255,255,255,.42);color:#fff;background:transparent}
+.btn-outline-light:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+
+/* ---------- 导航 ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:100;height:72px;transition:background .3s,box-shadow .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-color:var(--line);box-shadow:0 4px 20px rgba(16,32,64,.05)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px;letter-spacing:.02em}
+.brand-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:#fff;font-size:16px;font-weight:800;box-shadow:0 6px 16px rgba(43,91,255,.28)}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-2);position:relative;transition:color .2s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:2px;background:var(--blue);border-radius:2px;transition:width .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-cta{padding:10px 22px;font-size:14px}
+.nav-toggle{display:none;width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:12px;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;padding:150px 0 92px;background:
+  radial-gradient(860px 480px at 82% 4%,rgba(43,91,255,.11),transparent 62%),
+  radial-gradient(680px 420px at 0% 92%,rgba(8,191,166,.11),transparent 60%),#fff}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(11,18,32,.033) 1px,transparent 1px),linear-gradient(90deg,rgba(11,18,32,.033) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 78%);mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 78%)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.02fr 1fr;gap:64px;align-items:center}
+.hero h1{font-size:clamp(38px,5.2vw,66px);line-height:1.16;font-weight:800;letter-spacing:-.035em;margin:22px 0 24px}
+.hero-sub{font-size:17px;color:var(--ink-2);max-width:520px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:36px 0 40px}
+.hero-trust{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--ink-3)}
+.avatars{display:flex}
+.avatars span{width:30px;height:30px;border-radius:50%;border:2px solid #fff;margin-left:-9px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff}
+.avatars span:first-child{margin-left:0}
+.avatars span:nth-child(1){background:var(--blue)}
+.avatars span:nth-child(2){background:var(--cyan)}
+.avatars span:nth-child(3){background:var(--violet)}
+.avatars span:nth-child(4){background:#F59E0B}
+.hero-trust b{color:var(--ink);font-weight:700}
+
+/* ---------- 控制台可视化 ---------- */
+.console-wrap{position:relative}
+.console{position:relative;background:#0B1220;border-radius:22px;padding:20px;color:#fff;box-shadow:var(--shadow-l);border:1px solid rgba(255,255,255,.08)}
+.console-top{display:flex;align-items:center;gap:8px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.09);font-size:12px;color:#93A4BE;letter-spacing:.04em}
+.dots{display:flex;gap:5px;margin-right:8px}
+.dots i{width:7px;height:7px;border-radius:50%;display:block}
+.dots i:nth-child(1){background:#FF6B6B}.dots i:nth-child(2){background:#FFC24B}.dots i:nth-child(3){background:#3DDC97}
+.live{margin-left:auto;display:flex;align-items:center;gap:6px;color:#3DDC97;font-weight:700;font-size:11px}
+.live::before{content:"";width:6px;height:6px;border-radius:50%;background:#3DDC97;box-shadow:0 0 0 4px rgba(61,220,151,.16);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(61,220,151,0)}}
+.console-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.metric{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px}
+.metric small{display:block;font-size:10.5px;color:#8A9BB5;margin-bottom:5px}
+.metric b{font-size:20px;letter-spacing:-.02em;display:block;line-height:1.2}
+.metric em{font-style:normal;font-size:10px;color:#3DDC97;margin-left:5px;font-weight:600}
+.metric:nth-child(2) b{color:#7FA0FF}.metric:nth-child(3) b{color:#5FE0C8}
+.chart-box{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px 12px 6px}
+.chart-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#93A4BE;padding:0 4px 4px}
+.chart-head strong{color:#fff;font-size:12px}
+.chart{width:100%;height:132px;overflow:visible}
+.chart .gridline{stroke:rgba(255,255,255,.07);stroke-width:1}
+.chart .area{fill:url(#areaGrad)}
+.chart .line{fill:none;stroke:#6B87FF;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.2s ease forwards .3s}
+.chart .line2{fill:none;stroke:#3DDC97;stroke-width:2;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.2s ease forwards .7s;opacity:.85}
+@keyframes draw{to{stroke-dashoffset:0}}
+.chart .dot{fill:#fff;stroke:#6B87FF;stroke-width:2.5}
+.chart .xlabel{fill:#6F809B;font-size:9px;font-family:var(--font)}
+.console-foot{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:11px;color:#93A4BE}
+.bar{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));animation:grow 1.8s ease forwards .5s}
+@keyframes grow{to{width:78%}}
+.float-card{position:absolute;background:#fff;border-radius:14px;padding:12px 15px;box-shadow:var(--shadow-m);border:1px solid var(--line);display:flex;align-items:center;gap:10px;font-size:12px;z-index:2;animation:float 5s ease-in-out infinite}
+.float-card .fc-icon{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff}
+.float-card strong{display:block;font-size:15px;line-height:1.2}
+.float-card span{color:var(--ink-3);font-size:11px}
+.float-card.one{top:-26px;right:-22px}
+.float-card.two{bottom:-24px;left:-30px;animation-delay:-2.5s}
+@keyframes float{50%{transform:translateY(-8px)}}
+
+/* ---------- 数据条 ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:34px 28px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.stat b i{font-style:normal;color:var(--blue);font-size:.52em;font-weight:700;letter-spacing:0;margin-left:3px;vertical-align:baseline}
+.stat span{font-size:13.5px;color:var(--ink-3)}
+
+/* ---------- 客户墙 ---------- */
+.clients{padding:52px 0 60px;background:var(--bg-soft)}
+.clients p{text-align:center;font-size:12px;letter-spacing:.16em;color:var(--ink-3);font-weight:600;margin-bottom:26px}
+.logos{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.logos span{font-size:19px;font-weight:700;color:#A8B4C6;letter-spacing:.06em;transition:color .25s}
+.logos span:hover{color:var(--blue)}
+
+/* ---------- 能力矩阵 ---------- */
+.cap-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start}
+.cap-tabs{display:flex;flex-direction:column;gap:10px;margin-top:36px}
+.cap-tab{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:transparent;border:1px solid transparent;border-radius:14px;padding:16px 18px;cursor:pointer;transition:all .25s;color:var(--ink-2)}
+.cap-tab:hover{background:#fff;border-color:var(--line)}
+.cap-tab.active{background:#fff;border-color:var(--line);box-shadow:var(--shadow-m);color:var(--ink)}
+.cap-tab .num{font-size:12px;font-weight:700;color:var(--ink-3);width:22px}
+.cap-tab.active .num{color:var(--blue)}
+.cap-tab .t{font-size:16px;font-weight:700;flex:1}
+.cap-tab .icon{width:18px;height:18px;opacity:0;transform:translateX(-6px);transition:all .25s;color:var(--blue)}
+.cap-tab.active .icon{opacity:1;transform:none}
+.cap-tab.active::before{content:"";position:absolute;left:0;width:3px;height:30px;background:var(--blue);border-radius:0 3px 3px 0}
+.cap-tab{position:relative}
+.cap-panels{position:relative}
+.cap-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow-m)}
+.cap-panel.active{display:block;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.cap-visual{height:168px;border-radius:14px;position:relative;overflow:hidden;margin-bottom:24px;display:grid;place-items:center}
+.cap-visual.v1{background:linear-gradient(135deg,#EAF0FF,#DDEBFF)}
+.cap-visual.v2{background:linear-gradient(135deg,#E3F7F3,#DDF2FF)}
+.cap-visual.v3{background:linear-gradient(135deg,#F0EAFF,#E5EFFF)}
+.cap-visual.v4{background:linear-gradient(135deg,#E9F6F1,#E6EEFF)}
+.cap-visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(43,91,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(43,91,255,.06) 1px,transparent 1px);background-size:28px 28px}
+.nodes{position:relative;display:flex;align-items:center;gap:14px;z-index:1}
+.node{width:54px;height:54px;border-radius:14px;background:#fff;box-shadow:0 10px 24px rgba(43,91,255,.14);display:grid;place-items:center;color:var(--blue);font-size:11px;font-weight:700}
+.node.core{width:70px;height:70px;background:var(--blue);color:#fff;box-shadow:0 14px 30px rgba(43,91,255,.32)}
+.connector{width:26px;height:2px;background:linear-gradient(90deg,var(--blue),rgba(43,91,255,.18))}
+.v2 .node.core{background:var(--cyan);box-shadow:0 14px 30px rgba(8,191,166,.3)}
+.v3 .node.core{background:var(--violet);box-shadow:0 14px 30px rgba(124,92,255,.3)}
+.v4 .node.core{background:#0B1220;box-shadow:0 14px 30px rgba(11,18,32,.28)}
+.visual-tag{position:absolute;bottom:14px;right:16px;z-index:1;font-size:10.5px;letter-spacing:.12em;color:rgba(11,18,32,.42);font-weight:700}
+.cap-panel h3{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.cap-en{font-size:11px;letter-spacing:.16em;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:4px}
+.cap-panel>p{color:var(--ink-2);font-size:15px;margin:12px 0 18px}
+.checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.checks li{display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--ink-2)}
+.checks .icon{width:16px;height:16px;color:var(--cyan);margin-top:4px}
+.cap-metric{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-3)}
+.cap-metric b{font-size:22px;color:var(--blue);font-weight:800;letter-spacing:-.02em}
+
+/* ---------- 流程 ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:20px}
+.step{padding:0 24px;position:relative}
+.step:first-child{padding-left:0}
+.step::after{content:"";position:absolute;top:22px;left:calc(50% + 30px);right:calc(-50% + 30px);height:1px;background:linear-gradient(90deg,var(--line),var(--blue));opacity:.6}
+.step:last-child::after{display:none}
+.step-num{width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-s);display:grid;place-items:center;font-weight:800;color:var(--blue);font-size:15px;margin-bottom:20px;position:relative;z-index:1}
+.step h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.step p{font-size:14px;color:var(--ink-2)}
+.step small{display:block;font-size:11px;letter-spacing:.14em;color:var(--ink-3);font-weight:700;margin-bottom:10px}
+
+/* ---------- 案例 ---------- */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.case{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .28s,box-shadow .28s,border-color .28s;display:flex;flex-direction:column}
+.case:hover{transform:translateY(-6px);box-shadow:var(--shadow-m);border-color:transparent}
+.case-top{height:132px;padding:22px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.case-top.c1{background:linear-gradient(135deg,#2B5BFF,#6B87FF)}
+.case-top.c2{background:linear-gradient(135deg,#0B8F80,#08BFA6)}
+.case-top.c3{background:linear-gradient(135deg,#5B3FD6,#7C5CFF)}
+.case-top::after{content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(255,255,255,.22);border-radius:50%;right:-56px;top:-56px}
+.case-top::before{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(255,255,255,.16);border-radius:50%;right:-16px;top:-16px}
+.case-industry{font-size:11px;letter-spacing:.16em;font-weight:700;opacity:.9;position:relative;z-index:1}
+.case-kpi{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1;position:relative;z-index:1}
+.case-kpi small{font-size:13px;font-weight:600;margin-left:6px;opacity:.85}
+.case-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.case-body h3{font-size:18px;font-weight:700;margin-bottom:10px}
+.case-body p{font-size:14px;color:var(--ink-2);flex:1}
+.case-foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--blue);font-weight:600}
+.case-foot .icon{width:16px;height:16px;transition:transform .25s}
+.case:hover .case-foot .icon{transform:translateX(4px)}
+
+/* ---------- CTA ---------- */
+.cta-wrap{padding:0 0 104px}
+.cta{background:#0B1220;border-radius:26px;padding:64px 60px;color:#fff;position:relative;overflow:hidden;display:grid;grid-template-columns:1.3fr .7fr;gap:36px;align-items:center}
+.cta::before{content:"";position:absolute;width:520px;height:520px;right:-140px;top:-220px;border-radius:50%;background:radial-gradient(circle,rgba(43,91,255,.38),transparent 65%)}
+.cta::after{content:"";position:absolute;width:340px;height:340px;left:-120px;bottom:-220px;border-radius:50%;background:radial-gradient(circle,rgba(8,191,166,.22),transparent 65%)}
+.cta>*{position:relative;z-index:1}
+.cta .eyebrow{color:#7FA0FF}
+.cta .eyebrow::before{background:#7FA0FF}
+.cta h2{font-size:clamp(26px,3.2vw,38px);font-weight:800;line-height:1.3;letter-spacing:-.02em;margin:16px 0 14px}
+.cta p{color:#A7B6CC;font-size:15px;max-width:520px}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.cta-ring{justify-self:center;width:190px;height:190px;border-radius:50%;border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;position:relative}
+.cta-ring::before{content:"";position:absolute;inset:26px;border-radius:50%;border:1px solid rgba(127,160,255,.4)}
+.cta-ring::after{content:"";position:absolute;inset:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 50px rgba(43,91,255,.45)}
+.cta-ring span{position:relative;z-index:2;font-size:13px;font-weight:700;letter-spacing:.14em;color:#fff}
+
+/* ---------- 联系 ---------- */
+.contact-grid{display:grid;grid-template-columns:1.35fr .75fr;gap:28px;align-items:start}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px;box-shadow:var(--shadow-s)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{font-size:13.5px;font-weight:600}
+.field label i{font-style:normal;color:#E5484D;margin-left:3px}
+.field input,.field textarea{width:100%;padding:12px 14px;font-size:14.5px;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--bg-soft);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s,background .2s;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(43,91,255,.12)}
+.form-bottom{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.form-hint{font-size:13px;min-height:20px}
+.form-hint.ok{color:#0B8F80}.form-hint.err{color:#E5484D}
+.info-card{background:var(--bg-soft);border:1px solid var(--line);border-radius:22px;padding:30px}
+.info-card h3{font-size:17px;font-weight:700;margin-bottom:20px}
+.info-list{list-style:none;display:grid;gap:20px}
+.info-list li{display:flex;gap:12px;align-items:flex-start}
+.info-list .icon{width:18px;height:18px;color:var(--blue);margin-top:3px}
+.info-list strong{display:block;font-size:12px;color:var(--ink-3);font-weight:600;margin-bottom:2px}
+.info-list span{font-size:14.5px;color:var(--ink)}
+.info-note{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+
+/* ---------- 页脚 ---------- */
+.footer{background:#0B1220;color:#9AAAC2;padding-top:60px}
+.footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:44px}
+.footer .brand{color:#fff}
+.footer .brand p{font-size:13.5px;color:#8496B0;font-weight:400;margin-top:8px;letter-spacing:0}
+.footer-cols{display:flex;gap:80px;flex-wrap:wrap}
+.footer-cols h4{font-size:13px;color:#fff;font-weight:700;margin-bottom:16px}
+.footer-cols a{display:block;font-size:13.5px;margin-bottom:10px;transition:color .2s}
+.footer-cols a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.09);padding:20px 0;font-size:12.5px;color:#6E809B;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* ---------- 滚动入场 ---------- */
+.js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.js [data-reveal].in{opacity:1;transform:none}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:1020px){
+  .hero-grid{grid-template-columns:1fr;gap:76px}
+  .hero{padding-top:132px}
+  .console-wrap{max-width:560px;margin:0 auto;width:100%}
+  .cap-layout{grid-template-columns:1fr;gap:32px}
+  .cap-tabs{flex-direction:row;flex-wrap:wrap;margin-top:28px}
+  .cap-tab{flex:1 1 44%;background:#fff;border-color:var(--line)}
+  .cap-tab.active::before{display:none}
+  .cta{grid-template-columns:1fr;padding:52px 40px}
+  .cta-ring{display:none}
+}
+@media(max-width:860px){
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-m);padding:20px 28px;flex-direction:column;align-items:flex-start;gap:18px}
+  .nav-links.open{display:flex}
+  .nav-cta{display:none}
+  .nav-toggle{display:flex}
+  .section{padding:76px 0}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .cases{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:32px 0}
+  .step::after{display:none}
+}
+@media(max-width:620px){
+  .wrap{padding:0 20px}
+  .hero h1{font-size:38px}
+  .hero-sub{font-size:15.5px}
+  .float-card.one{right:-6px;top:-30px}
+  .float-card.two{left:-6px;bottom:-28px}
+  .float-card{padding:9px 11px}
+  .float-card strong{font-size:13px}
+  .console{padding:14px}
+  .metric b{font-size:17px}
+  .cases{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .cap-tab{flex:1 1 100%}
+  .checks{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .form-card,.info-card{padding:24px}
+  .cta-wrap{padding-bottom:76px}
+  .cta{padding:40px 24px}
+  .footer-cols{gap:36px}
+  .logos{justify-content:center;gap:18px 28px}
+  .logos span{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- 图标库（内联，无外部依赖） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H7a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 9.5a4.5 4.5 0 0 1-.5 9.5Z"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7L19 17Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 7v10M8 5h4a4 4 0 0 1 4 4v1M8 19h4a4 4 0 0 0 4-4v-1"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8Z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5a3 3 0 0 1 0 6M18 14c2 1 3 3 3 6"/></symbol>
+</svg>
+
+<!-- ============ 导航 ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand"><span class="brand-mark">智</span><span>智联云科</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">首页</a>
+      <a href="#capability">核心能力</a>
+      <a href="#process">交付方法</a>
+      <a href="#cases">客户案例</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary nav-cta">预约咨询 <svg class="icon"><use href="#i-arrow"/></svg></a>
+    <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false"><svg class="icon" id="navToggleIcon"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <!-- ============ Hero ============ -->
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Enterprise Digital Partner</span>
+        <h1>让数据成为企业的<br><span class="grad-text">第二增长曲线</span></h1>
+        <p class="hero-sub">从云基础设施到智能决策，智联云科以云计算、数据中台与 AI 一体化能力，陪伴企业把技术投入真正转化为业务增长。</p>
+        <div class="hero-actions">
+          <a href="#capability" class="btn btn-primary">探索解决方案 <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a href="#cases" class="btn btn-line">查看客户成果</a>
+        </div>
+        <div class="hero-trust">
+          <div class="avatars"><span>华</span><span>远</span><span>云</span><span>中</span></div>
+          <div>已服务 <b>320+ 家企业客户</b>，覆盖金融、制造、零售与政务</div>
+        </div>
+      </div>
+
+      <div class="console-wrap">
+        <div class="float-card one">
+          <span class="fc-icon" style="background:linear-gradient(135deg,#2B5BFF,#6B87FF)"><svg class="icon"><use href="#i-trend"/></svg></span>
+          <div><strong>+32%</strong><span>AI 预测带来的效率提升</span></div>
+        </div>
+        <div class="console">
+          <div class="console-top">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span>DATA INTELLIGENCE CONSOLE</span>
+            <span class="live">LIVE</span>
+          </div>
+          <div class="console-metrics">
+            <div class="metric"><small>接入数据源</small><b data-count="128" data-suffix="">0</b></div>
+            <div class="metric"><small>日均模型调用</small><b data-count="46" data-suffix="万">0</b></div>
+            <div class="metric"><small>系统可用性</small><b data-count="99" data-suffix=".99%">0</b></div>
+          </div>
+          <div class="chart-box">
+            <div class="chart-head"><strong>实时经营指标</strong><span>近 12 个月 · 数据驱动增长</span></div>
+            <svg class="chart" viewBox="0 0 340 132" preserveAspectRatio="none" aria-label="经营指标增长趋势图">
+              <defs>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#6B87FF" stop-opacity=".42"/>
+                  <stop offset="100%" stop-color="#6B87FF" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line class="gridline" x1="0" y1="30" x2="340" y2="30"/>
+              <line class="gridline" x1="0" y1="66" x2="340" y2="66"/>
+              <line class="gridline" x1="0" y1="102" x2="340" y2="102"/>
+              <path class="area" d="M0 108 L28 100 L56 104 L85 84 L113 90 L142 70 L170 76 L198 54 L227 60 L255 38 L283 44 L312 20 L340 12 L340 132 L0 132 Z"/>
+              <path class="line" d="M0 108 L28 100 L56 104 L85 84 L113 90 L142 70 L170 76 L198 54 L227 60 L255 38 L283 44 L312 20 L340 12"/>
+              <path class="line2" d="M0 118 L28 114 L56 112 L85 108 L113 102 L142 100 L170 92 L198 88 L227 80 L255 74 L283 68 L312 62 L340 56"/>
+              <circle class="dot" cx="340" cy="12" r="4"/>
+              <text class="xlabel" x="0" y="128">JAN</text>
+              <text class="xlabel" x="150" y="128">JUN</text>
+              <text class="xlabel" x="310" y="128">DEC</text>
+            </svg>
+          </div>
+          <div class="console-foot"><span>数据接入进度</span><span class="bar"><i></i></span><b style="color:#fff;font-size:11px">78%</b></div>
+        </div>
+        <div class="float-card two">
+          <span class="fc-icon" style="background:linear-gradient(135deg,#08BFA6,#3DDC97)"><svg class="icon"><use href="#i-shield"/></svg></span>
+          <div><strong>7×24</strong><span>全天候专属运维支持</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 数据条 ============ -->
+  <section class="stats" aria-label="核心数据">
+    <div class="wrap stats-grid">
+      <div class="stat" data-reveal><b><span class="cnt" data-count="320">0</span><i>+</i></b><span>服务企业客户</span></div>
+      <div class="stat" data-reveal><b><span class="cnt" data-count="12">0</span><i>年</i></b><span>行业深耕经验</span></div>
+      <div class="stat" data-reveal><b><span class="cnt" data-count="200">0</span><i>+</i></b><span>研发与交付专家</span></div>
+      <div class="stat" data-reveal><b><span class="cnt" data-count="99">0</span><i>.99%</i></b><span>系统可用性承诺</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 客户墙 ============ -->
+  <section class="clients">
+    <div class="wrap">
+      <p>TRUSTED BY INDUSTRY LEADERS</p>
+      <div class="logos">
+        <span>华信银行</span><span>远驰汽车</span><span>云集零售</span><span>中恒能源</span><span>数科政务</span><span>恒通物流</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 核心能力 ============ -->
+  <section class="section" id="capability">
+    <div class="wrap cap-layout">
+      <div data-reveal>
+        <span class="eyebrow">Core Capabilities</span>
+        <h2 class="sec-title">一套底座，<br>支撑全栈数字化</h2>
+        <p class="sec-desc">从底层基础设施到上层智能应用，我们把复杂技术沉淀为可复用、可演进的企业级能力。</p>
+        <div class="cap-tabs" role="tablist" aria-label="核心能力列表">
+          <button class="cap-tab active" data-tab="0" role="tab" aria-selected="true"><span class="num">01</span><span class="t">云原生平台</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+          <button class="cap-tab" data-tab="1" role="tab" aria-selected="false"><span class="num">02</span><span class="t">数据中台</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+          <button class="cap-tab" data-tab="2" role="tab" aria-selected="false"><span class="num">03</span><span class="t">AI 智能应用</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+          <button class="cap-tab" data-tab="3" role="tab" aria-selected="false"><span class="num">04</span><span class="t">安全合规</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+
+      <div class="cap-panels" data-reveal>
+        <!-- 01 -->
+        <div class="cap-panel active" data-panel="0" role="tabpanel">
+          <div class="cap-visual v1">
+            <div class="nodes"><div class="node">容器</div><span class="connector"></span><div class="node core">云平台</div><span class="connector"></span><div class="node">多活</div></div>
+            <span class="visual-tag">CLOUD NATIVE ARCHITECTURE</span>
+          </div>
+          <div class="cap-en">Cloud Native Platform</div>
+          <h3>云原生平台</h3>
+          <p>以容器化、微服务与多活架构重构 IT 底座，让系统随业务弹性伸缩，发布不再是一场冒险。</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check"/></svg>Kubernetes 集群与混合云管理</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>微服务治理与服务网格</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>异地多活与容灾演练</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>全链路可观测体系</li>
+          </ul>
+          <div class="cap-metric"><b>-45%</b><span>典型客户资源成本下降幅度</span></div>
+        </div>
+        <!-- 02 -->
+        <div class="cap-panel" data-panel="1" role="tabpanel">
+          <div class="cap-visual v2">
+            <div class="nodes"><div class="node">业务系统</div><span class="connector"></span><div class="node core">数据中台</div><span class="connector"></span><div class="node">经营看板</div></div>
+            <span class="visual-tag">UNIFIED DATA ASSET</span>
+          </div>
+          <div class="cap-en">Unified Data Platform</div>
+          <h3>数据中台</h3>
+          <p>统一数据资产口径，打通业务孤岛，把散落在各系统里的数据变成可复用、可度量的经营资产。</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check"/></svg>湖仓一体与实时计算</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>指标中心与元数据治理</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>数据质量与血缘追踪</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>自助式 BI 与经营分析</li>
+          </ul>
+          <div class="cap-metric"><b>T+1 → 实时</b><span>报表时效的典型提升</span></div>
+        </div>
+        <!-- 03 -->
+        <div class="cap-panel" data-panel="2" role="tabpanel">
+          <div class="cap-visual v3">
+            <div class="nodes"><div class="node">场景数据</div><span class="connector"></span><div class="node core">AI 引擎</div><span class="connector"></span><div class="node">业务决策</div></div>
+            <span class="visual-tag">AI POWERED DECISION</span>
+          </div>
+          <div class="cap-en">Applied AI</div>
+          <h3>AI 智能应用</h3>
+          <p>从智能客服、预测分析到企业大模型应用，让 AI 落在具体业务流程里，产生可核算的收益。</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check"/></svg>企业级大模型与知识库</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>视觉质检与预测性维护</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>智能客服与坐席辅助</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>模型评测与持续迭代</li>
+          </ul>
+          <div class="cap-metric"><b>99.6%</b><span>制造场景缺陷识别准确率</span></div>
+        </div>
+        <!-- 04 -->
+        <div class="cap-panel" data-panel="3" role="tabpanel">
+          <div class="cap-visual v4">
+            <div class="nodes"><div class="node">身份</div><span class="connector"></span><div class="node core">零信任</div><span class="connector"></span><div class="node">审计</div></div>
+            <span class="visual-tag">SECURITY &amp; COMPLIANCE</span>
+          </div>
+          <div class="cap-en">Security &amp; Compliance</div>
+          <h3>安全合规</h3>
+          <p>把安全内建到架构与流程中，覆盖等保合规、零信任访问与全链路审计，数据主权始终属于客户。</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check"/></svg>等保与行业合规咨询</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>零信任访问控制</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>数据分级与加密治理</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>全链路操作审计</li>
+          </ul>
+          <div class="cap-metric"><b>0</b><span>重大数据安全事故记录</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 交付方法 ============ -->
+  <section class="section soft" id="process">
+    <div class="wrap">
+      <div class="sec-head center" data-reveal>
+        <span class="eyebrow">How We Deliver</span>
+        <h2 class="sec-title">可预期、可衡量的交付节奏</h2>
+        <p class="sec-desc">成熟的方法论与工程化体系，让每一个阶段都有明确产出。</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal><div class="step-num">01</div><small>DISCOVER</small><h3>咨询规划</h3><p>深入业务现场，梳理现状与痛点，输出可落地的数字化蓝图与优先级。</p></div>
+        <div class="step" data-reveal><div class="step-num">02</div><small>DESIGN</small><h3>架构设计</h3><p>确定技术选型、数据模型与安全边界，形成可评审的架构方案。</p></div>
+        <div class="step" data-reveal><div class="step-num">03</div><small>BUILD</small><h3>敏捷交付</h3><p>双周迭代、自动化流水线，业务方全程参与，风险前置暴露。</p></div>
+        <div class="step" data-reveal><div class="step-num">04</div><small>RUN</small><h3>持续运营</h3><p>7×24 监控与专属支持，用数据持续验证效果并迭代优化。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 客户案例 ============ -->
+  <section class="section" id="cases">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow">Customer Stories</span>
+        <h2 class="sec-title">被信任，因为我们交付结果</h2>
+        <p class="sec-desc">数字不会说谎，以下是客户与我们一起达成的改变。</p>
+      </div>
+      <div class="cases">
+        <article class="case" data-reveal>
+          <div class="case-top c1"><span class="case-industry">FINANCE · 金融</span><span class="case-kpi">40%<small>决策效率提升</small></span></div>
+          <div class="case-body"><h3>某股份制银行数据中台</h3><p>统一 12 个业务系统数据口径，报表时效从 T+1 提升至实时，管理层决策链路显著缩短。</p><div class="case-foot"><span>数据中台 · 实时计算</span><svg class="icon"><use href="#i-arrow"/></svg></div></div>
+        </article>
+        <article class="case" data-reveal>
+          <div class="case-top c2"><span class="case-industry">MANUFACTURING · 制造</span><span class="case-kpi">99.6%<small>缺陷识别准确率</small></span></div>
+          <div class="case-body"><h3>头部车企智能工厂</h3><p>AI 视觉质检替代人工目检，覆盖全产线关键工位，年节约质量成本超千万元。</p><div class="case-foot"><span>AI 应用 · 视觉质检</span><svg class="icon"><use href="#i-arrow"/></svg></div></div>
+        </article>
+        <article class="case" data-reveal>
+          <div class="case-top c3"><span class="case-industry">RETAIL · 零售</span><span class="case-kpi">28%<small>会员复购率提升</small></span></div>
+          <div class="case-body"><h3>连锁零售全渠道中台</h3><p>打通线上线下会员与库存，新店上线周期缩短一半，营销活动可当天配置上线。</p><div class="case-foot"><span>云原生 · 全渠道中台</span><svg class="icon"><use href="#i-arrow"/></svg></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-wrap">
+    <div class="wrap">
+      <div class="cta" data-reveal>
+        <div>
+          <span class="eyebrow">Let's Build Together</span>
+          <h2>把下一个增长目标，<br>交给技术来实现</h2>
+          <p>告诉我们您正在面对的业务挑战，资深顾问将在 1 个工作日内与您联系，提供初步思路与参考方案。</p>
+          <div class="cta-actions">
+            <a href="#contact" class="btn btn-light">预约免费咨询 <svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a href="#capability" class="btn btn-outline-light">了解服务能力</a>
+          </div>
+        </div>
+        <div class="cta-ring"><span>ZHILIAN CLOUD</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 联系 ============ -->
+  <section class="section soft" id="contact">
+    <div class="wrap">
+      <div class="sec-head center" data-reveal>
+        <span class="eyebrow">Get In Touch</span>
+        <h2 class="sec-title">说说您的挑战，我们给出方案</h2>
+      </div>
+      <div class="contact-grid">
+        <form class="form-card" id="contactForm" novalidate data-reveal>
+          <div class="form-grid">
+            <div class="field"><label for="name">姓名 <i>*</i></label><input type="text" id="name" name="name" placeholder="您的称呼" required></div>
+            <div class="field"><label for="company">公司</label><input type="text" id="company" name="company" placeholder="公司名称"></div>
+            <div class="field"><label for="phone">电话 <i>*</i></label><input type="tel" id="phone" name="phone" placeholder="便于回访的手机号" required></div>
+            <div class="field"><label for="email">邮箱</label><input type="email" id="email" name="email" placeholder="name@company.com"></div>
+            <div class="field full"><label for="message">需求描述 <i>*</i></label><textarea id="message" name="message" rows="4" placeholder="简单描述您的业务场景与当前诉求" required></textarea></div>
+            <div class="form-bottom">
+              <button type="submit" class="btn btn-primary" id="submitBtn">提交咨询 <svg class="icon"><use href="#i-arrow"/></svg></button>
+              <p class="form-hint" id="formHint" role="status"></p>
+            </div>
+          </div>
+        </form>
+        <aside class="info-card" data-reveal>
+          <h3>其他方式找到我们</h3>
+          <ul class="info-list">
+            <li><svg class="icon"><use href="#i-phone"/></svg><div><strong>商务热线</strong><span>400-888-0000</span></div></li>
+            <li><svg class="icon"><use href="#i-mail"/></svg><div><strong>邮箱</strong><span>contact@zhilian-yunke.com</span></div></li>
+            <li><svg class="icon"><use href="#i-pin"/></svg><div><strong>总部地址</strong><span>北京市海淀区中关村科技园 A 座 18 层</span></div></li>
+            <li><svg class="icon"><use href="#i-clock"/></svg><div><strong>工作时间</strong><span>周一至周五 9:00 - 18:00</span></div></li>
+          </ul>
+          <p class="info-note">本页面为演示站点，表单不会真实提交；接入后端后可在接口层对接客户线索系统。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ 页脚 ============ -->
+<footer class="footer">
+  <div class="wrap footer-top">
+    <div class="brand"><span class="brand-mark">智</span><div><span>智联云科</span><p>以技术驱动企业数字化未来</p></div></div>
+    <div class="footer-cols">
+      <div><h4>站点导航</h4><a href="#home">首页</a><a href="#capability">核心能力</a><a href="#process">交付方法</a><a href="#cases">客户案例</a></div>
+      <div><h4>服务能力</h4><a href="#capability">云原生平台</a><a href="#capability">数据中台</a><a href="#capability">AI 智能应用</a><a href="#capability">安全合规</a></div>
+      <div><h4>联系我们</h4><a href="#contact">预约咨询</a><a href="tel:4008880000">400-888-0000</a><a href="mailto:contact@zhilian-yunke.com">发送邮件</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom wrap"><span>© 2014 - 2026 智联云科（示例站点）. 保留所有权利.</span><span>企业级云计算 · 数据中台 · AI 解决方案</span></div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var $ = function(s,c){return (c||document).querySelector(s)};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  /* 导航栏滚动态 */
+  var nav = $('#nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 30); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* 移动端菜单 */
+  var toggle = $('#navToggle'), links = $('#navLinks'), toggleIcon = $('#navToggleIcon');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+    toggleIcon.innerHTML = '<use href="#' + (open ? 'i-x' : 'i-menu') + '"/>';
+  });
+  $$('a', links).forEach(function(a){ a.addEventListener('click', function(){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); toggleIcon.innerHTML='<use href="#i-menu"/>'; }); });
+
+  /* 当前区块高亮 */
+  var navItems = $$('.nav-links a');
+  var sections = navItems.map(function(a){ return $(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window){
+    var navObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          navItems.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    sections.forEach(function(s){ navObserver.observe(s); });
+  }
+
+  /* 滚动入场：首屏立即可见，其余滚动触发；并带失效兜底 */
+  var reveals = $$('[data-reveal]');
+  var showAll = function(){ reveals.forEach(function(el){ el.classList.add('in'); }); };
+  if ('IntersectionObserver' in window){
+    var ioFired = false;
+    var io = new IntersectionObserver(function(entries){
+      ioFired = true;
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    reveals.forEach(function(el,i){ el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+    /* 首屏元素不等待观察器回调，避免出现空白区 */
+    requestAnimationFrame(function(){
+      reveals.forEach(function(el){
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+      });
+    });
+    /* 极端环境下观察器完全不回调时，强制显示所有内容 */
+    setTimeout(function(){ if(!ioFired) showAll(); }, 1500);
+  } else {
+    showAll();
+  }
+
+  /* 数字滚动 */
+  var counters = $$('[data-count]');
+  var runCount = function(el){
+    var target = parseFloat(el.dataset.count) || 0, suffix = el.dataset.suffix || '';
+    var dur = 1500, start = performance.now();
+    var step = function(now){
+      var p = Math.min((now - start)/dur, 1);
+      var val = Math.floor((1 - Math.pow(1-p, 3)) * target);
+      el.textContent = val + suffix;
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(step);
+  };
+  if ('IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ runCount(e.target); cio.unobserve(e.target); } });
+    }, {threshold:.5});
+    counters.forEach(function(el){ cio.observe(el); });
+  } else { counters.forEach(runCount); }
+
+  /* 能力切换 */
+  var tabs = $$('.cap-tab'), panels = $$('.cap-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var i = tab.dataset.tab;
+      tabs.forEach(function(t){ var on = t === tab; t.classList.toggle('active', on); t.setAttribute('aria-selected', on); });
+      panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel === i); });
+    });
+  });
+
+  /* 联系表单（演示模式） */
+  var form = $('#contactForm'), hint = $('#formHint'), btn = $('#submitBtn');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    hint.className = 'form-hint'; hint.textContent = '';
+    var d = {
+      name: form.name.value.trim(), company: form.company.value.trim(),
+      phone: form.phone.value.trim(), email: form.email.value.trim(),
+      message: form.message.value.trim()
+    };
+    if (!d.name || !d.phone || !d.message){
+      hint.className = 'form-hint err'; hint.textContent = '请填写带 * 的必填项（姓名、电话、需求描述）。'; return;
+    }
+    if (!/^1[3-9]\d{9}$/.test(d.phone)){
+      hint.className = 'form-hint err'; hint.textContent = '手机号格式不正确，请检查。'; return;
+    }
+    if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)){
+      hint.className = 'form-hint err'; hint.textContent = '邮箱格式不正确，请检查。'; return;
+    }
+    btn.disabled = true; btn.textContent = '提交中...';
+    setTimeout(function(){
+      console.log('[演示模式] 表单数据（未连接后端）：', d);
+      hint.className = 'form-hint ok';
+      hint.textContent = '已记录您的需求（演示模式，未连接后端），我们会尽快与您联系！';
+      btn.disabled = false; btn.innerHTML = '提交咨询 <svg class="icon"><use href="#i-arrow"/></svg>';
+      form.reset();
+    }, 600);
+  });
+})();
+</script>
+</body>
+</html>
